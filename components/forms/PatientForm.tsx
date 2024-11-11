@@ -42,11 +42,12 @@ function PatientForm() {
     setIsLoading(true);
     try {
       const userData = { name, email, phone };
-      console.log(userData);
-     const user =  await createUser(userData);
+      const user = await createUser(userData);
+      console.log(user);
       if (user) {
         router.push(`/patients/${user.$id}/register`);
       }
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -79,7 +80,7 @@ function PatientForm() {
         <CustomFormField
           control={form.control}
           fieldType={FormFieldType.PHONE_INPUT}
-          name="phone number"
+          name="phone"
           label="phone number"
           placeholder="+2012345679"
         />

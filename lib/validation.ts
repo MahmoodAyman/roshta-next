@@ -4,12 +4,5 @@ export const UserFormValidation = z.object({
     message: "Name must be at least 2 characters.",
   }),
   email: z.string().email("Invalid email address"),
-  phone: z
-    .string()
-    .refine(
-      (phone) => /^01[0125][0-9]{8}$/.test(phone),
-      "invalid phone number"
-    ),
+  phone: z.string().min(5, { message: "Phone must be at least 5 numbers" }),
 });
-
- 
